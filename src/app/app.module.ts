@@ -11,6 +11,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { GlobalErrorHandler } from './core/error/global-error-handler.service';
 import { CoreModule } from './core/core.module';
 import { AuthInterceptor } from 'angular-auth-oidc-client';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +23,7 @@ import { AuthInterceptor } from 'angular-auth-oidc-client';
     BrowserAnimationsModule,
     MatProgressBarModule,
     CoreModule,
+    ReactiveFormsModule
   ],
   providers: [
     {

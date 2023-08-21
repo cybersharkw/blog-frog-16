@@ -1,1 +1,10 @@
-<p>add-blog-page works!</p>
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <h2>Title:</h2>
+    <input type="text" formControlName="title">
+  
+    <h2>Text:</h2>
+    <textarea formControlName="text"></textarea>
+  
+    <button type="submit" [disabled]="myForm.invalid">OK</button>
+  </form>
+  
