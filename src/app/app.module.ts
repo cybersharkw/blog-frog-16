@@ -12,7 +12,7 @@ import { GlobalErrorHandler } from './core/error/global-error-handler.service';
 import { CoreModule } from './core/core.module';
 import { AuthInterceptor } from 'angular-auth-oidc-client';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +23,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     MatProgressBarModule,
     CoreModule,
-    ReactiveFormsModule
+    ReactiveFormsModule, 
+    MatFormFieldModule,
+
   ],
   providers: [
     {
