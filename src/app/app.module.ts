@@ -13,6 +13,7 @@ import { CoreModule } from './core/core.module';
 import { AuthInterceptor } from 'angular-auth-oidc-client';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,9 +24,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     BrowserAnimationsModule,
     MatProgressBarModule,
     CoreModule,
-    ReactiveFormsModule, 
+    ReactiveFormsModule,
     MatFormFieldModule,
-
+    MatInputModule,
   ],
   providers: [
     {

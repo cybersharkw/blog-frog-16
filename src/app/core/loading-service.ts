@@ -13,6 +13,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class LoadingService {
   state$ = new BehaviorSubject(false);
+  #state$ = new BehaviorSubject(false);
 
   constructor(private router: Router) {
     this.router.events.subscribe((event) => {
@@ -30,5 +31,9 @@ export class LoadingService {
         }
       }
     });
+  }
+
+  setLoadingState(value: boolean) {
+    this.#state$.next(value);
   }
 }

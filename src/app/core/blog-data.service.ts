@@ -16,9 +16,16 @@ const BlogSchema = z.object({
   createdByMe: z.boolean(),
 });
 
+const CreatedBlogSchema = z.object({
+  title: z.string(),
+  contentPreview: z.string(),
+  author: z.string(),
+});
+
 const BlogArraySchema = z.array(BlogSchema);
 
 export type Blog = z.infer<typeof BlogSchema>;
+export type CreatedBlog = z.infer<typeof CreatedBlogSchema>;
 
 @Injectable({
   providedIn: 'root',
@@ -30,5 +37,13 @@ export class BlogDataService {
     return this.httpClient
       .get<Blog[]>(`${environment.serviceUrl}/entries`)
       .pipe(map((blogs) => BlogArraySchema.parse(blogs)));
+  }
+
+  addBlog(blog: CreatedBlog) {
+    CreatedBlogSchema.parse(blog);
+    return this.httpClient.post<void>(
+      '${environment.serviceUrl}/entries',
+      blog
+    );
   }
 }

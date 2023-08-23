@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl, UntypedFormControl, UntypedFormGroup} from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { BlogStateService } from './state/blog-state.service';
+import { CreatedBlog } from 'src/app/core/blog-data.service';
+
+type InvalidFormGroup = {
+  title: FormControl<string | null>;
+  content: FormControl<string | null>;
+};
 
 @Component({
   selector: 'app-add-blog-page',
@@ -9,21 +14,24 @@ import { ReactiveFormsModule } from '@angular/forms';
   styleUrls: ['./add-blog-page.component.scss'],
 })
 export class AddBlogPageComponent implements OnInit {
-
   myForm!: FormGroup<InvalidFormGroup>;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(public blogStateService: BlogStateService) {}
 
   ngOnInit(): void {
     this.myForm = new FormGroup<InvalidFormGroup>({
-      title: ['', Validators.required],
-      text: ['', Validators.required]
+      title: new FormControl<string | null>('an existing title', [
+        Validators.required,
+        Validators.pattern('^[A-Z]+(.)*'),
+      ]),
+      content: new FormControl<string | null>('null'),
     });
   }
 
   onSubmit() {
     if (this.myForm.valid) {
-      console.log('Form submitted:', this.myForm.value);
+      console.log(this.myForm);
+      this.blogStateService.addBlog(this.myForm.value as CreatedBlog);
     } else {
       console.log('Form is invalid.');
     }

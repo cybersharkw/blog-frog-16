@@ -1,0 +1,16 @@
+.blog-input {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: 10%;
+  margin-top: 10%;
+  width: 80%;
+  .submit-button {
+    order: 2;
+    background-color: blue;
+    color: white;
+    align-self: flex-end;
+    width: 20%;
+    height: 10%;
+  }
+}

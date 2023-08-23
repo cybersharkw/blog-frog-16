@@ -1,20 +1,19 @@
-<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+<div class="blog-containter" *ngIf="blogStateService.state$ | async; let state">
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
     <div class="blog-input">
-      <button class="submit-button" mat-raised-button color="primary">Publish blog</button>
+      <button class="submit-button" mat-raised-button color="primary">
+        Publish blog
+      </button>
       <mat-form-field appearance="fill">
-      <mat-label>Title</mat-label>
-      <input matInput formControlName="titel">
-      <mat-error>Invalid title</mat-error>
+        <mat-label>Title</mat-label>
+        <input matInput formControlName="titel" />
+        <mat-error> Invalid title </mat-error>
       </mat-form-field>
       <mat-form-field appearance="fill">
-      <mat-label>Tell your Story</mat-label>
-      <textarea matInput rows="20" formControlName="content"></textarea>
-      <mat-error>should not be empty</mat-error>
+        <mat-label>Tell your Story</mat-label>
+        <textarea matInput rows="20" formControlName="content"></textarea>
+        <mat-error>should not be empty</mat-error>
       </mat-form-field>
     </div>
-
-
-
   </form>
-
-  
+</div>
